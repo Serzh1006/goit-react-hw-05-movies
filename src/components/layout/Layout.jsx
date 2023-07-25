@@ -1,0 +1,24 @@
+import { Outlet, Link } from 'react-router-dom';
+import css from './layout.module.css';
+
+const Layout = () => {
+  return (
+    <>
+      <header className={css.header}>
+        <nav className={css.navigate}>
+          <Link className={css.linkNav} to="/">
+            Home
+          </Link>
+          <Link className={css.linkNav} to="/movies">
+            Movies
+          </Link>
+        </nav>
+        <main>
+          <Outlet />
+        </main>
+      </header>
+    </>
+  );
+};
+
+export default Layout;

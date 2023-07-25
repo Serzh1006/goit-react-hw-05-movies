@@ -2,9 +2,9 @@ import { Routes, Route } from 'react-router-dom';
 import Home from '../pages/Home';
 import Movies from '../pages/Movies';
 import MovieDetails from '../pages/MovieDetails';
-import Layout from './layout/Layout';
-import Cast from './cast/Cast';
-import Reviews from './reviews/Reviews';
+import Layout from './Layout';
+import Cast from './Cast';
+import Reviews from './Reviews';
 
 const App = () => {
   return (
