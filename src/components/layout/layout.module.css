@@ -7,8 +7,9 @@
 
 .navigate {
   display: flex;
-  gap: 30px;
-  padding-top: 3px;
+  gap: 10px;
+  padding-top: 4px;
+  padding-left: 15px;
   text-transform: uppercase;
   font-family: 'Times New Roman', Times, serif;
   font-size: 18px;
@@ -17,6 +18,10 @@
 .linkNav {
   text-decoration: none;
   color: rgb(245, 245, 245);
-  border-radius: 3px;
   padding: 4px;
+}
+
+.linkNav:hover,
+.linkNav:focus {
+  text-decoration: underline;
 }

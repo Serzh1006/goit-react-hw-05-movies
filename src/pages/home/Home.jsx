@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { fetchTrendingAll } from 'services/fetchTrendingAll';
 import getTitle from 'helpers/getTitle';
+import css from './home.module.css';
 
 const Home = () => {
   const [popularFilms, setPopularFilms] = useState([]);
@@ -16,7 +17,11 @@ const Home = () => {
           const title = getTitle(obj);
           return (
             <li key={obj.id}>
-              <Link to={`/movies/${obj.id}`} state={{ from: location }}>
+              <Link
+                className={css.itemListFilm}
+                to={`/movies/${obj.id}`}
+                state={{ from: location }}
+              >
                 {title}
               </Link>
             </li>
@@ -27,7 +32,7 @@ const Home = () => {
     };
     fetchOnServer();
   }, [location]);
-  return <ul>{popularFilms}</ul>;
+  return <ul className={css.listFilms}>{popularFilms}</ul>;
 };
 
 export default Home;

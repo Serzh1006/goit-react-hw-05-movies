@@ -1,0 +1,24 @@
+.listFilms {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 20px 0 0 20px;
+  list-style: none;
+}
+
+.itemListFilm {
+  text-decoration: none;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 18px;
+  color: rgb(71, 77, 73);
+  transition-property: color;
+  transition-duration: 200ms;
+  transition-timing-function: linear;
+}
+
+.itemListFilm:hover,
+.itemListFilm:focus {
+  color: rgb(2, 38, 155);
+  text-decoration: underline;
+  outline: none;
+}
