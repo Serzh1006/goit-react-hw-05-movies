@@ -93,7 +93,11 @@ const MovieDetails = () => {
                 </Link>
               </li>
             </ul>
-            <Suspense fallback={<div>Loading information...</div>}>
+            <Suspense
+              fallback={
+                <div className={css.loadInfo}>Loading information...</div>
+              }
+            >
               <Outlet />
             </Suspense>
           </div>

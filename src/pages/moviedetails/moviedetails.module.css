@@ -66,13 +66,13 @@
 .addInfoTitle {
   font-family: 'Times New Roman', Times, serif;
   font-size: 20px;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 .addInfoList {
   display: flex;
   gap: 10px;
   list-style: none;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 .addInfoItem {
   text-decoration: none;
@@ -83,4 +83,8 @@
 .addInfoItem:focus {
   text-decoration: underline;
   color: gray;
+}
+
+.loadInfo {
+  padding-bottom: 10px;
 }
