@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { format } from 'date-fns';
 import { useParams, Link, useLocation, Outlet } from 'react-router-dom';
 import { fetchDetailsFilm } from 'services/fetchDetailsFilm';
@@ -16,7 +16,7 @@ const MovieDetails = () => {
 
   const { movieId } = useParams();
   const location = useLocation();
-  const backLink = location.state?.from ?? '/';
+  const backLink = useRef(location.state?.from ?? '/');
 
   useEffect(() => {
     try {
@@ -52,31 +52,36 @@ const MovieDetails = () => {
 
   return (
     <>
-      <Link className={css.goback} to={backLink}>
+      <Link className={css.goback} to={backLink.current}>
         {'<-'} Go Back
       </Link>
-      <div className={css.containerInfo}>
-        {isLoading && <h2>loading...</h2>}
-        {!isLoading && (
+
+      {isLoading && <h2>loading...</h2>}
+      {!isLoading && (
+        <>
           <div className={css.filmInfo}>
             <img src={imgsrc} alt={altimg} width="300px" />
-            <h2 className={css.titleFilm}>
-              {title} ({year})
-            </h2>
-            <p className={css.scoreFilm}>User Score: {userScore}%</p>
-            <h3 className={css.overview}>Overview</h3>
-            <p>{overview}</p>
-            <h3 className={css.genre}>Genres</h3>
-            <ul className={css.genreList}>
-              {genre.map(objGenre => {
-                return (
-                  <li key={objGenre.id}>
-                    <p>{objGenre.name}</p>
-                  </li>
-                );
-              })}
-            </ul>
 
+            <div className={css.content}>
+              <h2 className={css.titleFilm}>
+                {title} ({year})
+              </h2>
+              <p className={css.scoreFilm}>User Score: {userScore}%</p>
+              <h3 className={css.overview}>Overview</h3>
+              <p>{overview}</p>
+              <h3 className={css.genre}>Genres</h3>
+              <ul className={css.genreList}>
+                {genre.map(objGenre => {
+                  return (
+                    <li key={objGenre.id}>
+                      <p>{objGenre.name}</p>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          </div>
+          <div>
             <h4 className={css.addInfoTitle}>Additional information</h4>
             <ul className={css.addInfoList}>
               <li className={css.addInfoItem}>
@@ -86,11 +91,10 @@ const MovieDetails = () => {
                 <Link to={'reviews'}>Reviews</Link>
               </li>
             </ul>
+            <Outlet />
           </div>
-        )}
-
-        <Outlet />
-      </div>
+        </>
+      )}
     </>
   );
 };
