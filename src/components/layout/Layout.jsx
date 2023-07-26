@@ -15,7 +15,7 @@ const Layout = () => {
           </Link>
         </nav>
         <main>
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<div className={css.loading}>Loading...</div>}>
             <Outlet />
           </Suspense>
         </main>
