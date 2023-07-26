@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { fetchReviews } from 'services/fetchReviews';
+import css from './reviews.module.css';
 
 const Reviews = () => {
   const [infoReviews, setInfoReviews] = useState([]);
@@ -26,7 +27,7 @@ const Reviews = () => {
   return (
     <div>
       {!reviewsEmpty ? (
-        <ul>
+        <ul className={css.reviewsList}>
           {infoReviews.map(obj => {
             return (
               <li key={obj.id}>

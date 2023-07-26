@@ -1,0 +1,11 @@
+.castList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  list-style: none;
+}
+
+.character {
+  font-size: 18px;
+  font-weight: 600;
+}

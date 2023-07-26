@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams, Link, useLocation } from 'react-router-dom';
 import { fetchSearchMovie } from 'services/fetchSearchMovie';
+import css from './movies.module.css';
 
 const Movies = () => {
   const [searchValue, setSearchValue] = useState('');
@@ -22,7 +23,11 @@ const Movies = () => {
           const getData = data.map(obj => {
             return (
               <li key={obj.id}>
-                <Link to={`/movies/${obj.id}`} state={{ from: location }}>
+                <Link
+                  className={css.filmsQueryItem}
+                  to={`/movies/${obj.id}`}
+                  state={{ from: location }}
+                >
                   {obj.title}
                 </Link>
               </li>
@@ -51,8 +56,9 @@ const Movies = () => {
 
   return (
     <>
-      <form onSubmit={submitByQuery}>
+      <form onSubmit={submitByQuery} className={css.form}>
         <input
+          className={css.input}
           value={searchValue}
           type="text"
           autoComplete="off"
@@ -60,9 +66,11 @@ const Movies = () => {
           placeholder="Search movies"
           onChange={getValue}
         />
-        <button type="submit">Search</button>
+        <button className={css.btnSubmit} type="submit">
+          Search
+        </button>
       </form>
-      {query !== '' && <ul>{dataArray}</ul>}
+      {query !== '' && <ul className={css.filmsListQuery}>{dataArray}</ul>}
     </>
   );
 };

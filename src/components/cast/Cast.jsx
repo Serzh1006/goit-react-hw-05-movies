@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { fetchActors } from '../../services/fetchActors';
+import css from './cast.module.css';
 
 const Cast = () => {
   const [castArray, setCastArray] = useState([]);
@@ -23,7 +24,7 @@ const Cast = () => {
 
   return (
     <div>
-      <ul>
+      <ul className={css.castList}>
         {castArray.map(actor => {
           return (
             <li key={actor.id}>
@@ -44,7 +45,7 @@ const Cast = () => {
               )}
 
               {actor.original_name}
-              <p>Character: {actor.character}</p>
+              <p className={css.character}>Character: {actor.character}</p>
             </li>
           );
         })}
