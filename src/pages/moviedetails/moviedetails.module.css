@@ -1,6 +1,7 @@
 .filmInfo {
   display: flex;
   gap: 30px;
+  flex-wrap: wrap;
   margin: 20px 0 0 20px;
 }
 
