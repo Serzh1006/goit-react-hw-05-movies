@@ -52,14 +52,12 @@ const Movies = () => {
   return (
     <>
       <form onSubmit={submitByQuery}>
-        <label htmlFor="input">Search Film</label>
         <input
           value={searchValue}
           type="text"
           autoComplete="off"
           autoFocus
           placeholder="Search movies"
-          id="input"
           onChange={getValue}
         />
         <button type="submit">Search</button>

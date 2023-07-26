@@ -21,8 +21,6 @@ const Cast = () => {
     }
   }, [movieId]);
 
-  // https://louisville.edu/research/handaresearchlab/pi-and-students/photos/nocamera.png/image_view_fullscreen
-
   return (
     <div>
       <ul>
