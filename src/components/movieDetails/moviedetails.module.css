@@ -1,0 +1,88 @@
+.filmInfo {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin: 20px 0 0 0;
+}
+
+.content {
+  width: 50%;
+}
+
+.goback {
+  display: block;
+  width: 85px;
+  margin-bottom: 20px;
+  text-decoration: none;
+  padding: 3px;
+  color: gray;
+}
+
+.goback:hover,
+.goback:focus {
+  color: black;
+}
+
+.titleFilm {
+  margin-top: 20px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
+  font-size: 25px;
+}
+
+.titleFilm {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  margin-bottom: 20px;
+}
+
+.scoreFilm {
+  margin-bottom: 15px;
+}
+
+.overview {
+  margin-bottom: 10px;
+}
+
+.overviewText {
+  text-align: left;
+  margin-bottom: 20px;
+}
+.genre {
+  margin-bottom: 10px;
+}
+.genreList {
+  display: flex;
+  gap: 5px;
+  list-style: none;
+}
+
+.addInfo {
+  margin-top: 20px;
+}
+
+.addInfoTitle {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+.addInfoList {
+  display: flex;
+  gap: 10px;
+  list-style: none;
+  margin-bottom: 20px;
+}
+.addInfoItem {
+  text-decoration: none;
+  color: rgb(29, 26, 26);
+}
+
+.addInfoItem:hover,
+.addInfoItem:focus {
+  text-decoration: underline;
+  color: gray;
+}
+
+.loadInfo {
+  padding-bottom: 10px;
+}
