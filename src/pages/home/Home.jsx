@@ -1,38 +1,34 @@
 import { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import SearchFilms from 'components/searchFilms/SearchFilms';
 import { fetchTrendingAll } from 'services/fetchTrendingAll';
-import getTitle from 'helpers/getTitle';
-import css from './home.module.css';
 
 const Home = () => {
   const [popularFilms, setPopularFilms] = useState([]);
   const location = useLocation();
 
   useEffect(() => {
-    const fetchOnServer = async () => {
-      const promise = await fetchTrendingAll();
-      if ((promise.status = 200)) {
-        const dataRes = promise.data.results;
-        const basedata = dataRes.map(obj => {
-          const title = getTitle(obj);
-          return (
-            <li key={obj.id}>
-              <Link
-                className={css.itemListFilm}
-                to={`/movies/${obj.id}`}
-                state={{ from: location }}
-              >
-                {title}
-              </Link>
-            </li>
-          );
-        });
-        setPopularFilms(basedata);
-      }
-    };
-    fetchOnServer();
+    try {
+      const fetchOnServer = async () => {
+        const promise = await fetchTrendingAll();
+        if (!promise) {
+          return;
+        }
+        setPopularFilms(promise.data.results);
+      };
+      fetchOnServer();
+    } catch (error) {
+      console.log(error.message);
+    }
   }, [location]);
-  return <ul className={css.listFilms}>{popularFilms}</ul>;
+
+  return (
+    <div>
+      {popularFilms.length > 0 && (
+        <SearchFilms films={popularFilms} onLocation={location} />
+      )}
+    </div>
+  );
 };
 
 export default Home;

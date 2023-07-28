@@ -15,9 +15,12 @@ const options = {
 };
 
 export const fetchSearchMovie = async query => {
-  const response = await axios.get(
-    `${fetchLinks.URL}?query=${query}&api_key=${fetchLinks.KEY}`,
-    options
-  );
+  const response = await axios
+    .get(`${fetchLinks.URL}?query=${query}&api_key=${fetchLinks.KEY}`, options)
+    .catch(function (error) {
+      if (error.response.status !== 200) {
+        return alert(error.response.data.status_message);
+      }
+    });
   return response;
 };

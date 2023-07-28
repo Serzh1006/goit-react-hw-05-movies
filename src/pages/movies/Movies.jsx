@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { useSearchParams, Link, useLocation } from 'react-router-dom';
+import { useSearchParams, useLocation } from 'react-router-dom';
+import SearchFilms from 'components/searchFilms/SearchFilms';
 import { fetchSearchMovie } from 'services/fetchSearchMovie';
 import css from './movies.module.css';
 
@@ -18,24 +19,13 @@ const Movies = () => {
     const getFilmByQuery = async () => {
       try {
         const response = await fetchSearchMovie(query);
-        if (response.status === 200) {
-          const data = response.data.results;
-          const getData = data.map(obj => {
-            return (
-              <li key={obj.id}>
-                <Link
-                  className={css.filmsQueryItem}
-                  to={`/movies/${obj.id}`}
-                  state={{ from: location }}
-                >
-                  {obj.title}
-                </Link>
-              </li>
-            );
-          });
-          setDataArray(getData);
+        if (!response) {
+          return;
         }
-      } catch (error) {}
+        setDataArray(response.data.results);
+      } catch (error) {
+        alert(error.message);
+      }
     };
 
     getFilmByQuery();
@@ -70,7 +60,9 @@ const Movies = () => {
           Search
         </button>
       </form>
-      {query !== '' && <ul className={css.filmsListQuery}>{dataArray}</ul>}
+      {dataArray.length !== 0 && (
+        <SearchFilms films={dataArray} onLocation={location} />
+      )}
     </>
   );
 };

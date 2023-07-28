@@ -15,9 +15,12 @@ const options = {
 };
 
 export const fetchDetailsFilm = async id => {
-  const response = await axios.get(
-    `${fetchLinks.URL}${id}?api_key=${fetchLinks.KEY}`,
-    options
-  );
+  const response = await axios
+    .get(`${fetchLinks.URL}${id}?api_key=${fetchLinks.KEY}`, options)
+    .catch(function (error) {
+      if (error.response.status !== 200) {
+        return alert(error.response.data.status_message);
+      }
+    });
   return response;
 };

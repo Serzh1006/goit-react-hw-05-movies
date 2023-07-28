@@ -22,31 +22,30 @@ const MovieDetails = () => {
     try {
       const detailsFilm = async () => {
         setIsLoading(true);
-        const responce = await fetchDetailsFilm(Number(movieId));
-        if (responce.status === 200) {
-          const dataObj = responce.data;
-          setIsLoading(false);
-          setTitle(dataObj.original_title);
-          dataObj.poster_path === null
-            ? setImgsrc(
-                'https://thumbs.dreamstime.com/z/ardoise-de-film-et-bobine-de-film-sur-le-bois-36502412.jpg?w=992'
-              )
-            : setImgsrc(
-                `https://image.tmdb.org/t/p/w500${dataObj.poster_path}`
-              );
-
-          setOverview(dataObj.overview);
-          setGenre(dataObj.genres);
-          const newYearFormat = format(new Date(dataObj.release_date), 'yyyy');
-          setYear(newYearFormat);
-          setAltImg(dataObj.title);
-          const score = (dataObj.vote_average * 10).toFixed();
-          setUserScore(score);
+        const response = await fetchDetailsFilm(Number(movieId));
+        if (!response) {
+          return;
         }
+        const dataObj = response.data;
+        setIsLoading(false);
+        setTitle(dataObj.original_title);
+        dataObj.poster_path === null
+          ? setImgsrc(
+              'https://thumbs.dreamstime.com/z/ardoise-de-film-et-bobine-de-film-sur-le-bois-36502412.jpg?w=992'
+            )
+          : setImgsrc(`https://image.tmdb.org/t/p/w500${dataObj.poster_path}`);
+
+        setOverview(dataObj.overview);
+        setGenre(dataObj.genres);
+        const newYearFormat = format(new Date(dataObj.release_date), 'yyyy');
+        setYear(newYearFormat);
+        setAltImg(dataObj.title);
+        const score = (dataObj.vote_average * 10).toFixed();
+        setUserScore(score);
       };
       detailsFilm();
     } catch (error) {
-      console.log(error.message);
+      alert(error.message);
     }
   }, [movieId]);
 

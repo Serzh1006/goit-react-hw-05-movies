@@ -15,9 +15,12 @@ const options = {
 };
 
 export const fetchTrendingAll = async () => {
-  const response = await axios.get(
-    `${fetchLinks.URL}?api_key=${fetchLinks.KEY}`,
-    options
-  );
+  const response = await axios
+    .get(`${fetchLinks.URL}?api_key=${fetchLinks.KEY}`, options)
+    .catch(function (error) {
+      if (error.response.status !== 200) {
+        return alert(error.response.data.status_message);
+      }
+    });
   return response;
 };

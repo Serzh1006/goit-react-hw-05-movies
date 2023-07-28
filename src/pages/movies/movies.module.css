@@ -1,6 +1,4 @@
 .input {
-  margin-top: 20px;
-  margin-left: 20px;
   outline: none;
   padding: 3px;
   padding-left: 10px;
@@ -13,30 +11,4 @@
   border: none;
   cursor: pointer;
   background-color: rgb(115, 156, 153);
-}
-
-.filmsListQuery {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-top: 15px;
-  margin-left: 30px;
-  list-style: none;
-}
-
-.filmsQueryItem {
-  text-decoration: none;
-  font-family: 'Times New Roman', Times, serif;
-  font-size: 20px;
-  color: rgb(71, 77, 73);
-  transition-property: color;
-  transition-duration: 200ms;
-  transition-timing-function: linear;
-}
-
-.filmsQueryItem:hover,
-.filmsQueryItem:focus {
-  color: rgb(2, 38, 155);
-  text-decoration: underline;
-  outline: none;
 }

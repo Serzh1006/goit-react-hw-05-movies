@@ -12,12 +12,13 @@ const Reviews = () => {
     try {
       const getReviews = async () => {
         const response = await fetchReviews(Number(movieId));
-        if (response.status === 200) {
-          const reviewsData = response.data.results;
-          reviewsData.length !== 0
-            ? setInfoReviews(reviewsData)
-            : setReviewsEmpty(true);
+        if (!response) {
+          return;
         }
+        const reviewsData = response.data.results;
+        reviewsData.length !== 0
+          ? setInfoReviews(reviewsData)
+          : setReviewsEmpty(true);
       };
 
       getReviews();
